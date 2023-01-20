@@ -76,5 +76,5 @@ def predecir():
     #    cd = {"Code":"503","Descripción":"Algo en el servidor no funciona"
     #    return cd
 
-#if __name__ == '__main__':
-#   app.run()
+if __name__ == '__main__':
+    app.run()
