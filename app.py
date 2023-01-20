@@ -19,12 +19,6 @@ cors = CORS(app, resources={r"/predecir": {"origins": "*"}})
 def index():
 	return 'La página está funcionando bien'
 
-@app.route("/pendejo")
-def pensejo():
-        msk = {"Mensaje":"Esto es correcto"}
-        return msk
-
-
 @app.route("/predecir", methods=["POST"])
 def predecir():
     #try:
@@ -51,8 +45,8 @@ def predecir():
         date = datetime.now()
         f1_str = date.strftime('%d%m%Y%H%M%S')
         cadena = f1_str+".jpg"
-        lugar = "imagenes/" + cadena
-        #lugar = cadena
+        #lugar = "imagenes/" + cadena
+        lugar = cadena
         img.save(lugar)
 
         #predecir svm
@@ -76,9 +70,6 @@ def predecir():
         elif answer == 1:
             estado = "ENFERMA"
 
-        #print(estado)
-        #remove(cadena)
-     #   cd = {"Des ":c, "Estado":estado}
         cd = {"Code":"200", "Descripción":estado, "Nivel":resultado_svm, "Nombre":cadena}
         return cd
     #except:
@@ -86,4 +77,4 @@ def predecir():
     #    return cd
 
 #if __name__ == '__main__':
- #   app.run()
+#   app.run()
