@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_cors import CORS
 import numpy as np
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
@@ -17,7 +17,7 @@ cors = CORS(app, resources={r"/predecir": {"origins": "*"}})
 
 @app.route("/")
 def index():
-	return 'La página está funcionando bien'
+	return render_template("index.html")
 
 @app.route("/predecir", methods=["POST"])
 def predecir():
@@ -76,5 +76,5 @@ def predecir():
     #    cd = {"Code":"503","Descripción":"Algo en el servidor no funciona"
     #    return cd
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()
